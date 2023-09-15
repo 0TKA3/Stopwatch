@@ -17,7 +17,6 @@ function App() {
 
   function createStopwatch() {
     setStopwatchList([...stopwatchList,newStopwatch])
-    console.log(stopwatchList)
   }
 
   return (

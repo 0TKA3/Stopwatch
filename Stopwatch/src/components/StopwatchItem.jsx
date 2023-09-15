@@ -17,11 +17,9 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
         let currentId = event.currentTarget.getAttribute('object-id')
         const newList = stopwatchList.filter((elem)=>{
             if(currentId!=elem.id) {
-                console.log()
                 return true
             }
             else {
-                console.log('no')
                 return false
             }
         })
