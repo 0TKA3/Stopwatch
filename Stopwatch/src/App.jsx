@@ -11,7 +11,6 @@ function App() {
 
   let newStopwatch = {
       title: 'Name me!',
-      time: '00:00',
       id: (new Date()).getTime(),
   }
 

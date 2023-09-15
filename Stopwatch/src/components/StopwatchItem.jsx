@@ -7,10 +7,10 @@ import { useState } from 'react'
 
 const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
 
+    let [time,setTime] = useState('00:00')
 
     function runTime(event) {
         let currentId = event.currentTarget.getAttribute('object-id')
-        console.log(obj.time)
     }
 
     function deleteItem(event) {
@@ -32,7 +32,7 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
                 <input className='stopwatch-title' type="text" defaultValue={obj.title}/>
                 <button className="close__button" onClick={deleteItem} object-id={obj.id}><img src={closeIcon} alt="play-button"  className="button-image"/></button>
               </div>
-              <h2>{obj.time}</h2>
+              <h2>{time}</h2>
               <div className="buttom-side">
                 <button><img  src={playIcon} alt="play-button"  className="button-image" onClick={runTime}/></button>
                 <button><img src={pauseIcon} alt="pause-button"  className="button-image"/></button>
