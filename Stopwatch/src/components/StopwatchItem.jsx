@@ -5,7 +5,7 @@ import closeIcon from '../assets/icons/close.svg'
 import { useState, useRef, useEffect } from 'react'
 
 
-const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
+const StopwatchItem = ({obj,stopwatchList,setStopwatchList,newStopwatch}) => {
 
     let currentTime
     let [time,setTime] = useState('0:0:0')
@@ -24,6 +24,10 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
         setDisabled(false)
     }
 
+
+    let currentStopwatch = {
+        ...newStopwatch
+    }
 
     function runTime(event) {
         setDisabled(true)
@@ -55,7 +59,7 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
                 
                 if (isResetRef.current === true) {
                     clearInterval(interval);
-                    newTime = ('0:0')
+                    newTime = ('0:0:0')
                 }
                 
                 setTime(newTime)
@@ -77,10 +81,13 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList}) => {
         setStopwatchList(newList)
     }
 
+    const [color, setColor] = useState(obj.color);
+
+
     return (
-        <div className="stopwatch" key={obj.id}>
+        <div className="stopwatch" key={obj.id} style={{backgroundColor: color}}>
               <div className="top-side">
-                <input className='stopwatch-title' type="text" defaultValue={obj.title}/>
+                <input className='stopwatch-title' type="text" defaultValue={currentStopwatch.title}/>
                 <button className="close__button" onClick={deleteItem} object-id={obj.id}><img src={closeIcon} alt="play-button"  className="button-image"/></button>
               </div>
               <h2>{time}</h2>
