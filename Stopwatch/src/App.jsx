@@ -10,7 +10,7 @@ function App() {
 
   let [modalVisibility, setModalVisibility] = useState('none')
 
-  let [stopwatchList, setStopwatchList] = useState([])
+  let [stopwatchList, setStopwatchList] = useState(JSON.parse(localStorage.getItem('stopwatchesStorage')) || [])
   let [title,setTitle] = useState('')
   let [color,setColor] = useState('')
 

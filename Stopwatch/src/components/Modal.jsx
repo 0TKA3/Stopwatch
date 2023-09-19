@@ -3,20 +3,24 @@ import pauseIcon from '../assets/icons/pause.svg'
 import repeatIcon from '../assets/icons/repeat.svg' 
 import closeIcon from '../assets/icons/close.svg' 
 import checkIcon from '../assets/icons/check.svg' 
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 const Modal = ({createModal,modalVisibility,setModalVisibility,setStopwatchList,stopwatchList,color,setColor,title,setTitle,newStopwatch}) => {
 
 
 
-    let newColor
-    let newTitle
+    let newColor = ''
+    let newTitle = ''
+
 
     
 
     function createStopwatch() {
+      setColor(newColor)
       setTitle(newTitle)
-      setStopwatchList([...stopwatchList, { ...newStopwatch, color: newColor }])
+      setStopwatchList([...stopwatchList, { ...newStopwatch, color: newColor,title:newTitle}])
+      localStorage.setItem('stopwatchesStorage', JSON.stringify([...stopwatchList, { ...newStopwatch, color: newColor, title: newTitle}]))
+      setModalVisibility('none')
       
     }
     function createModal() {

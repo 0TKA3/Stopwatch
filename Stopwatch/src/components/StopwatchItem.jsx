@@ -25,9 +25,7 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList,newStopwatch}) => {
     }
 
 
-    let currentStopwatch = {
-        ...newStopwatch
-    }
+
 
     function runTime(event) {
         setDisabled(true)
@@ -79,6 +77,7 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList,newStopwatch}) => {
             }
         })
         setStopwatchList(newList)
+        localStorage.setItem('stopwatchesStorage', JSON.stringify(newList))
     }
 
     const [color, setColor] = useState(obj.color);
@@ -87,7 +86,7 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList,newStopwatch}) => {
     return (
         <div className="stopwatch" key={obj.id} style={{backgroundColor: color}}>
               <div className="top-side">
-                <input className='stopwatch-title' type="text" defaultValue={currentStopwatch.title}/>
+                <input className='stopwatch-title' type="text" defaultValue={obj.title}/>
                 <button className="close__button" onClick={deleteItem} object-id={obj.id}><img src={closeIcon} alt="play-button"  className="button-image"/></button>
               </div>
               <h2>{time}</h2>
