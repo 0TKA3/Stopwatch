@@ -80,13 +80,27 @@ const StopwatchItem = ({obj,stopwatchList,setStopwatchList,newStopwatch}) => {
         localStorage.setItem('stopwatchesStorage', JSON.stringify(newList))
     }
 
+    function saveTitle(event) {
+        // const newTitle =  event.currentTarget.value
+        // const currentObj = (event.currentTarget.getAttribute('id'))
+        // let storage = localStorage.getItem('stopwatchesStorage')
+        // storage = JSON.parse(storage)
+        // let newStorage = storage.map((obj,index)=>{
+        //     if(obj.id == currentObj) {
+        //         obj.title = newTitle
+        //     }
+        // })
+        // console.log(newStorage)
+
+    }
+
     const [color, setColor] = useState(obj.color);
 
 
     return (
-        <div className="stopwatch" key={obj.id} style={{backgroundColor: color}}>
+        <div className="stopwatch" key={obj.id} style={{backgroundColor: color}} id={obj.id}>
               <div className="top-side">
-                <input className='stopwatch-title' type="text" defaultValue={obj.title}/>
+                <input className='stopwatch-title' type="text" defaultValue={obj.title} onBlur={saveTitle}  id={obj.id}/>
                 <button className="close__button" onClick={deleteItem} object-id={obj.id}><img src={closeIcon} alt="play-button"  className="button-image"/></button>
               </div>
               <h2>{time}</h2>
